@@ -3,8 +3,9 @@ Tamagochi, mais version Mirror universe ; Le but n'est pas de le tenir en vie, m
 
 ## Roadmap
 
-- [ ] Protection du repo Github
-- [ ] Créer le Wiki - Doc technique
+- [x] Protection du repo Github
+- [x] Créer le Wiki - Doc technique
+- [ ] Mise en place semver et Conventional Commits dans Git flow
 - [ ] Mise en place du monolithe
 - [ ] COC (Code of Conduct)
 - [ ] Mise en place des templates pour Issues
@@ -21,3 +22,8 @@ Tamagochi, mais version Mirror universe ; Le but n'est pas de le tenir en vie, m
 https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow
 
 http://danielkummer.github.io/git-flow-cheatsheet/
+
+## Autre
+https://semver.org/
+
+https://www.conventionalcommits.org/en/v1.0.0/
