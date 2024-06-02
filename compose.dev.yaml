@@ -15,7 +15,7 @@ services:
     depends_on:
       - database
     ports:
-      - 8080:8080
+      - ${API_PORT:-8080}:8080
 
   web:
     build:
@@ -31,7 +31,7 @@ services:
         - action: rebuild
           path: ./web/package.json
     ports: 
-      - 3000:5173
+      - ${WEB_PORT:-8080}:5173
     
   database:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
