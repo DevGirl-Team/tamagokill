@@ -18,6 +18,10 @@ Tamagochi, mais version Mirror universe ; Le but n'est pas de le tenir en vie, m
 - **API** - Axum
 - **DB** - PostgreSQL
 
+## Features du projet
+![Frame 1](https://github.com/DevGirl-Team/tamagokill/assets/15716589/24ae9fe2-0938-43f3-9917-47ddace803b7)
+
+
 ## Workflow Gitflow
 https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow
 
