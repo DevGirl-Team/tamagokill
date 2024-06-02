@@ -1,0 +1,37 @@
+services:
+  api:
+    build: ./api
+    # First launch the DB before the API
+    depends_on:
+      - database
+    restart: unless-stopped
+    ports:
+      # HTTP
+      - target: 8080
+        published: ${HTTP_PORT:-8080}
+        protocol: tcp
+      # HTTPS
+      - target: 443
+        published: ${HTTPS_PORT:-443}
+        protocol: tcp
+      # HTTP/3
+      - target: 443
+        published: ${HTTP3_PORT:-443}
+        protocol: udp
+
+  web:
+    build: ./web
+    ports: 
+      - 3000:3000
+  database:
+    image: postgres:${POSTGRES_VERSION:-16}-alpine
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-app}
+      # You should definitely change the password in production
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-root}
+      - POSTGRES_USER=${POSTGRES_USER:-app}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
