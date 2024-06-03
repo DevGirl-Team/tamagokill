@@ -8,8 +8,6 @@ RUN npm ci
 
 COPY . .
 
-RUN npm install
-
 ENTRYPOINT ["npm", "run", "dev", "--", "--host"]
 
 EXPOSE 5173
