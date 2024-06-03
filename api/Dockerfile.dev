@@ -6,8 +6,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN cargo install --path .
-
 RUN cargo install cargo-watch
 
 CMD ["cargo", "watch", "-x", "run"]
