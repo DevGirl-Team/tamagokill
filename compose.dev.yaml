@@ -11,6 +11,8 @@ services:
           target: /app
         - action: rebuild
           path: ./api/Cargo.toml
+        - action: rebuild
+          path: ./api/Dockerfile.dev
     restart: unless-stopped
     depends_on:
       - database
@@ -30,6 +32,8 @@ services:
             - node_modules/
         - action: rebuild
           path: ./web/package.json
+        - action: rebuild
+          path: ./web/Dockerfile.dev
     ports: 
       - ${WEB_PORT:-3000}:5173
     
