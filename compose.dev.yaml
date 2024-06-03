@@ -31,7 +31,7 @@ services:
         - action: rebuild
           path: ./web/package.json
     ports: 
-      - ${WEB_PORT:-8080}:5173
+      - ${WEB_PORT:-3000}:5173
     
   database:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
