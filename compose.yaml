@@ -11,7 +11,7 @@ services:
   web:
     build: ./web
     ports: 
-     - ${WEB_PORT:-8080}::3000
+     - ${WEB_PORT:-8080}:3000
       
   database:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
