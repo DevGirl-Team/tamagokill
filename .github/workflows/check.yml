@@ -1,0 +1,46 @@
+name: ✅ Tamagokill check
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  check-web:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v3
+
+      - name: 🏭 Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: current
+
+      - name: 📥 Install Web
+        working-directory: ./web
+        run: npm install
+
+      - name: 👾 Audit Web
+        working-directory: ./web
+        run: npm audit --audit-level=low
+
+      - name: 🧪 Test Web
+        working-directory: ./web
+        run: npm run test
+
+      - name: 👷‍♂️ Build Web
+        working-directory: ./web
+        run: npm run build
+
+  check-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v3
+
+      - name: 👷‍♂️ Build API
+        working-directory: ./api
+        run: cargo build
+
+      - name: 🧪 Test API
+        working-directory: ./api
+        run: cargo test
