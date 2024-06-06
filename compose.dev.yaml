@@ -23,6 +23,8 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile.dev
+      args:
+        - NODE_VERSION=${NODE_VERSION:-18}
     develop:
       watch:
         - action: sync

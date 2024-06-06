@@ -9,7 +9,10 @@ services:
       - ${API_PORT:-8080}:8080
 
   web:
-    build: ./web
+    build: 
+      context: ./web
+      args:
+        - NODE_VERSION=${NODE_VERSION:-18}
     ports: 
      - ${WEB_PORT:-8080}:3000
       
