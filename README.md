@@ -26,3 +26,17 @@ docker compose -f compose.dev.yaml up --build --watch
 ```
 docker compose up
 ```
+
+### Dev shell nix
+
+Si vous utilisez [nix](https://nixos.org/download/) (Linux ou MacOS), vous pouvez utiliser le shell de développement pour avoir un environnement de développement cohérent.
+
+Dans votre terminal, à la racine du projet, exécutez:
+```bash
+nix-shell
+```
+
+Si vous avez [activé les flakes](https://nixos.wiki/wiki/Flakes), vous pouvez aussi exécuter:
+```bash
+nix develop
+```
