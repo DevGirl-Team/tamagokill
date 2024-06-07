@@ -1,6 +1,8 @@
+ARG NODE_VERSION=18
+
 # FIRST STAGE : BUILDER
 
-FROM node:18-alpine AS builder
+FROM node:${NODE_VERSION}-alpine AS builder
 WORKDIR /app
 # Copy the files package.json AND package-lock.json
 COPY package*.json .
@@ -13,7 +15,7 @@ RUN npm prune --production
 
 # SECOND STAGE : FINAL
 
-FROM node:18-alpine
+FROM node:${NODE_VERSION}-alpine
 WORKDIR /app
 COPY --from=builder /app/build build/
 COPY --from=builder /app/node_modules node_modules/

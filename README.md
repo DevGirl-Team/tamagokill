@@ -1,7 +1,31 @@
 # tamagokill
 Tamagochi, mais version Mirror universe ; Le but n'est pas de le tenir en vie, mais de le tuer. Projet open-source avec la communauté sur Twitch. Pour fêter les 4k followers.
 
-## Préparation de l'environnement de développement
+## Getting started
+
+### Manually
+#### API
+```
+cargo run
+```
+
+#### Web
+```
+npm install
+npm run dev
+```
+
+
+### Docker
+#### Dev environment
+```
+docker compose -f compose.dev.yaml up --build --watch
+```
+
+#### Production environment
+```
+docker compose up
+```
 
 ### Dev shell nix
 
@@ -16,9 +40,3 @@ Si vous avez [activé les flakes](https://nixos.wiki/wiki/Flakes), vous pouvez a
 ```bash
 nix develop
 ```
-
-Une fois dans le devshell, vous aurez accès à la bonne version de `node` et `rust` et toutes les dépendances nécessaires (par exemple `cargo-watch` pour le hot reload de l'api, et `gitflow` pour gérer vos branches).
-
-## Workflow Gitflow
-https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow
-http://danielkummer.github.io/git-flow-cheatsheet/
