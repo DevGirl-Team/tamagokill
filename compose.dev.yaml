@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    develop:
+      watch:
+        - action: sync
+          path: ./api
+          target: /app
+        - action: rebuild
+          path: ./api/Cargo.toml
+        - action: rebuild
+          path: ./api/Dockerfile.dev
+    restart: unless-stopped
+    depends_on:
+      - database
+    ports:
+      - ${API_PORT:-8080}:8080
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile.dev
+      args:
+        - NODE_VERSION=${NODE_VERSION:-18}
+    develop:
+      watch:
+        - action: sync
+          path: ./web
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./web/package.json
+        - action: rebuild
+          path: ./web/Dockerfile.dev
+    ports: 
+      - ${WEB_PORT:-3000}:5173
+    
+  database:
+    image: postgres:${POSTGRES_VERSION:-16}-alpine
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-app}
+      # You should definitely change the password in production
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-root}
+      - POSTGRES_USER=${POSTGRES_USER:-app}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:

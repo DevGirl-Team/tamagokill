@@ -6,23 +6,16 @@ services:
       - database
     restart: unless-stopped
     ports:
-      # HTTP
-      - target: 8080
-        published: ${HTTP_PORT:-8080}
-        protocol: tcp
-      # HTTPS
-      - target: 443
-        published: ${HTTPS_PORT:-443}
-        protocol: tcp
-      # HTTP/3
-      - target: 443
-        published: ${HTTP3_PORT:-443}
-        protocol: udp
+      - ${API_PORT:-8080}:8080
 
   web:
-    build: ./web
+    build: 
+      context: ./web
+      args:
+        - NODE_VERSION=${NODE_VERSION:-18}
     ports: 
-      - 3000:3000
+     - ${WEB_PORT:-3000}:3000
+      
   database:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
     environment:

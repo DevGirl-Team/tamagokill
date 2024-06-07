@@ -1,0 +1,11 @@
+ARG RUST_VERSION=1.78.0
+
+FROM rust:${RUST_VERSION}-slim-bookworm
+
+WORKDIR /app
+
+COPY . .
+
+RUN cargo install cargo-watch
+
+CMD ["cargo", "watch", "-x", "run"]
