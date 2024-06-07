@@ -21,13 +21,42 @@ Tamagochi, mais version Mirror universe ; Le but n'est pas de le tenir en vie, m
 ## Features du projet
 ![Frame 1](https://github.com/DevGirl-Team/tamagokill/assets/15716589/24ae9fe2-0938-43f3-9917-47ddace803b7)
 
+## Getting started
 
-## Workflow Gitflow
-https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow
+### Manually
+#### API
+```
+cargo run
+```
 
-http://danielkummer.github.io/git-flow-cheatsheet/
+#### Web
+```
+npm install
+npm run dev
+```
 
-## Autre
-https://semver.org/
 
-https://www.conventionalcommits.org/en/v1.0.0/
+### Docker
+#### Dev environment
+```
+docker compose -f compose.dev.yaml up --build --watch
+```
+
+#### Production environment
+```
+docker compose up
+```
+
+### Dev shell nix
+
+Si vous utilisez [nix](https://nixos.org/download/) (Linux ou MacOS), vous pouvez utiliser le shell de développement pour avoir un environnement de développement cohérent.
+
+Dans votre terminal, à la racine du projet, exécutez:
+```bash
+nix-shell
+```
+
+Si vous avez [activé les flakes](https://nixos.wiki/wiki/Flakes), vous pouvez aussi exécuter:
+```bash
+nix develop
+```
