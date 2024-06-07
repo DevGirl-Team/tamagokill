@@ -12,8 +12,6 @@ jobs:
 
       - name: 🏭 Use Node.js
         uses: actions/setup-node@v3
-        with:
-          node-version: current
 
       - name: 📥 Install Web
         working-directory: ./web
