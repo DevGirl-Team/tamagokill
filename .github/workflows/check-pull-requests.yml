@@ -12,5 +12,5 @@ jobs:
       #  uses: agenthunt/conventional-commit-checker-action@v1.0.0
       - name: ✍️ Check commits
         uses: ahmadnassri/action-commit-lint@v2
-          with:
-            config: ./git-conventional-commits.yaml
+        with:
+          config: ./git-conventional-commits.yaml
