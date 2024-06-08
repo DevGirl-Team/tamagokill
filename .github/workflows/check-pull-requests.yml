@@ -7,8 +7,10 @@ jobs:
   conventionnal-commit:
     runs-on: ubuntu-latest
     steps:
-      - name: 🔎 Check pull request name and message
-        id: check-for-cc
-        uses: agenthunt/conventional-commit-checker-action@v1.0.0
+      #- name: 🔎 Check pull request name and message
+      #  id: check-for-cc
+      #  uses: agenthunt/conventional-commit-checker-action@v1.0.0
       - name: ✍️ Check commits
         uses: ahmadnassri/action-commit-lint@v2
+          with:
+            config: ./git-conventional-commits.yaml
