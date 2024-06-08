@@ -13,4 +13,4 @@ jobs:
       - name: ✍️ Check commits
         uses: ahmadnassri/action-commit-lint@v2
         with:
-          config: ./git-conventional-commits.yaml
+          config: ../../git-conventional-commits.yaml
