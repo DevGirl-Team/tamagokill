@@ -47,4 +47,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🔎 Check Conventional Commits
-        uses: crqra/conventional-commits-action@1.0.0
+        id: check-for-cc
+        uses: agenthunt/conventional-commit-checker-action@v1.0.0
