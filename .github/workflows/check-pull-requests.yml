@@ -3,6 +3,7 @@ on:
   pull_request:
     types: [opened, synchronize, edited]
 
+jobs:
   conventionnal-commit:
     runs-on: ubuntu-latest
     steps:
