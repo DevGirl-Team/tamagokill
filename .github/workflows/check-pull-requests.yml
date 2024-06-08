@@ -1,4 +1,4 @@
-name: ✅ Tamagokill check
+name: 📝 Tamagokill pull request check
 on:
   pull_request:
     types: [opened, synchronize, edited]
