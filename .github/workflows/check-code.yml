@@ -42,10 +42,3 @@ jobs:
       - name: 🧪 Test API
         working-directory: ./api
         run: cargo test
-
-  conventionnal-commit:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🔎 Check Conventional Commits
-        id: check-for-cc
-        uses: agenthunt/conventional-commit-checker-action@v1.0.0
