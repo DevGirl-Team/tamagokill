@@ -9,3 +9,4 @@ Don't hesitate to submit ideas for future version of the game
 - Share Tamago
 - System of XP and level for the user
 - Types of Tamago like Pokemon
+- Modding ?
