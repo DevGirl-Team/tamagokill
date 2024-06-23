@@ -35,7 +35,7 @@ services:
           path: ./web/package.json
         - action: rebuild
           path: ./web/Dockerfile.dev
-    ports: 
+    ports:
       - ${WEB_PORT:-3000}:5173
 
   docs:
@@ -55,9 +55,9 @@ services:
           path: ./docs/package.json
         - action: rebuild
           path: ./docs/Dockerfile.dev
-    ports: 
+    ports:
       - ${DOCS_PORT:-3001}:3001
-    
+
   database:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
     environment:
