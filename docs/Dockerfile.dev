@@ -1,0 +1,15 @@
+ARG NODE_VERSION=18
+
+FROM node:${NODE_VERSION}-alpine
+
+WORKDIR /app
+
+COPY package*.json .
+
+RUN npm ci --audit false --fund false
+
+COPY . .
+
+ENTRYPOINT ["npm", "run", "start", "--", "--host", "--port 3001"]
+
+EXPOSE 3001
