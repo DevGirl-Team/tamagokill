@@ -15,6 +15,14 @@ services:
         - NODE_VERSION=${NODE_VERSION:-18}
     ports: 
      - ${WEB_PORT:-3000}:3000
+
+  docs:
+    build: 
+      context: ./docs
+      args:
+        - NODE_VERSION=${NODE_VERSION:-18}
+    ports: 
+     - ${DOCS_PORT:-3001}:3001
       
   database:
     image: postgres:${POSTGRES_VERSION:-16}-alpine

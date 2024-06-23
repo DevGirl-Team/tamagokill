@@ -40,12 +40,12 @@ npm run dev
 ### Docker
 #### Dev environment
 ```
-docker compose -f compose.dev.yaml up --build --watch
+docker compose -f compose.dev.yaml up --build --watch -d
 ```
 
 #### Production environment
 ```
-docker compose up
+docker compose up -d
 ```
 
 ### Dev shell nix
