@@ -15,7 +15,7 @@ Tamagochi, mais version Mirror universe ; Le but n'est pas de le tenir en vie, m
 - [ ] Lancement du projet
 
 ## La stack
-- **Client Web** - JavaScript Vanilla ( + Typescript + ViteJS -> SSR)
+- **Client Web** - SvelteKit
 - **API** - Axum
 - **DB** - PostgreSQL
 
