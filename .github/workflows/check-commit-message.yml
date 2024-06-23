@@ -1,0 +1,15 @@
+name: ✍️ Verify commit message
+on:
+  push:
+
+jobs:
+  verify-commit-message:
+    name: 🤝 Check conventional commit
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v4
+      - name: ⛏️ Extract commit message
+        run: echo "${{ github.event.head_commit.message }}" > last-commit-message
+      - name: 🤝 Check conventional commit
+        run: npx git-conventional-commits commit-msg-hook last-commit-message
