@@ -10,6 +10,6 @@ RUN npm ci --audit false --fund false
 
 COPY . .
 
-ENTRYPOINT ["npm", "run", "start", "--", "--host", "--port 3001"]
+ENTRYPOINT ["npm", "run", "start", "--", "--host", "0.0.0.0", "--port", "3001"]
 
 EXPOSE 3001
