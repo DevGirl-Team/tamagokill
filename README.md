@@ -7,7 +7,7 @@ Tamagochi, mais version Mirror universe ; Le but n'est pas de le tenir en vie, m
 - [x] Créer le Wiki - Doc technique
 - [x] Mise en place semver et Conventional Commits dans Git flow
 - [x] Mise en place du monolithe
-- [ ] COC (Code of Conduct)
+- [X] COC (Code of Conduct)
 - [x] Mise en place des templates pour Issues
 - [ ] Mise en place de la doc avec [Docusaurus](https://docusaurus.io/)
 - [ ] Hosting (Shiftek ou Vercel ?)
