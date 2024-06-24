@@ -7,13 +7,17 @@ An Architectural Decision Records (ADR) is a small **markdown file** that docume
 
 ## Decision
 
-Architectural decisions can now be proposed by anyone through a pull request containing only an ADR file without additionnal code. The decision is considered approved and taken once the pull request is merged. An approved decision remains in effect until it is revoked by another ADR.
+Architectural decisions can now be proposed by anyone through a pull request containing only an ADR file without additionnal code. The decision is considered approved and taken once the pull request is merged. An approved decision remains in effect until it is revoked by another ADR. ADR file can't be modified, as they represent decision taken in the past.
 
 Making an ADR is **not mandatory**. But they are recommended to take important complex decisions that will affect the project.
 
 If needed the pull request that contains the ADR can include a temporary proof of concept (in a side branch, gist, pastebin, ...).
 
-ADR files follow the naming convention `./adr/<ISO date>-<ADR reference number>-<ADR title in kebab-case>.md`.
+ADR can include assets, like images or diagrams files. Any assets must be referenced and accessible in the markdown file.
+
+ADR markdown files follow the naming convention `./adr/<ISO date>-<ADR reference number>-<ADR title in kebab-case>.md`.
+
+Asset files follow the naming convention `./adr/assets/<ISO date>-<ADR reference number>-<ADR title in kebab-case>.<asset name>.<asset extension>`.
 
 Like any pull requests, ADRs needs a reasonnable number of reviews before being merged.
 
