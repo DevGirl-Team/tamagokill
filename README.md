@@ -7,15 +7,19 @@ Tamagochi, mais version Mirror universe ; Le but n'est pas de le tenir en vie, m
 - [x] Créer le Wiki - Doc technique
 - [x] Mise en place semver et Conventional Commits dans Git flow
 - [x] Mise en place du monolithe
-- [X] COC (Code of Conduct)
+- [x] COC (Code of Conduct)
 - [x] Mise en place des templates pour Issues
-- [ ] Mise en place de la doc avec [Docusaurus](https://docusaurus.io/)
+- [x] Mise en place de la doc avec [Docusaurus](https://docusaurus.io/)
+- [x] Ajout CONTRIBUTING.md
+- [ ] Intégrer le crate (code + doc) du générateur de tamago sprite
+- [ ] Ajout d'un manuel pour les ADR dans CONTRIBUTING.md
 - [ ] Hosting (Shiftek ou Vercel ?)
+- [ ] Transformer les fichiers de config en tables d'authorité
 - [ ] CI/CD
-- [ ] Lancement du projet
+- [ ] Lancement du projet en prod
 
 ## La stack
-- **Client Web** - JavaScript Vanilla ( + Typescript + ViteJS -> SSR)
+- **Client Web** - SvelteKit
 - **API** - Axum
 - **DB** - PostgreSQL
 
@@ -40,12 +44,12 @@ npm run dev
 ### Docker
 #### Dev environment
 ```
-docker compose -f compose.dev.yaml up --build --watch
+docker compose -f compose.dev.yaml up --build --watch -d
 ```
 
 #### Production environment
 ```
-docker compose up
+docker compose up -d
 ```
 
 ### Dev shell nix
