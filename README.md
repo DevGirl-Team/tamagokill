@@ -9,10 +9,14 @@ Tamagochi, mais version Mirror universe ; Le but n'est pas de le tenir en vie, m
 - [x] Mise en place du monolithe
 - [x] COC (Code of Conduct)
 - [x] Mise en place des templates pour Issues
-- [ ] Mise en place de la doc avec [Docusaurus](https://docusaurus.io/)
+- [x] Mise en place de la doc avec [Docusaurus](https://docusaurus.io/)
+- [x] Ajout CONTRIBUTING.md
+- [ ] Intégrer le crate (code + doc) du générateur de tamago sprite
+- [ ] Ajout d'un manuel pour les ADR dans CONTRIBUTING.md
 - [ ] Hosting (Shiftek ou Vercel ?)
+- [ ] Transformer les fichiers de config en tables d'authorité
 - [ ] CI/CD
-- [ ] Lancement du projet
+- [ ] Lancement du projet en prod
 
 ## La stack
 - **Client Web** - SvelteKit
