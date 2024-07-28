@@ -1,5 +1,7 @@
 use sea_orm_migration::prelude::*;
 
+use crate::m20240721_000001_create_user_table::User;
+
 pub struct Migration;
 
 impl MigrationName for Migration {
@@ -15,45 +17,60 @@ impl MigrationTrait for Migration {
         manager
             .create_table(
                 Table::create()
-                    .table(User::Table)
+                    .table(Tamago::Table)
                     .col(
-                        ColumnDef::new(User::Id)
+                        ColumnDef::new(Tamago::Id)
                             .integer()
                             .not_null()
                             .auto_increment()
                             .primary_key(),
                     )
-                    .col(ColumnDef::new(User::UserId).integer().not_null())
-                    .col(ColumnDef::new(User::Name).string().not_null())
-                    .col(ColumnDef::new(User::ActionPoints).integer().default(0))
-                    .col(ColumnDef::new(User::RefreshHandDate).timestamp())
+                    .col(ColumnDef::new(Tamago::UserId).integer().not_null())
+                    .col(ColumnDef::new(Tamago::Name).string().not_null())
+                    .col(ColumnDef::new(Tamago::Health).integer().not_null())
+                    .col(ColumnDef::new(Tamago::HealthMax).integer().not_null())
+                    .col(ColumnDef::new(Tamago::Evolution).integer().default(0))
+                    .col(ColumnDef::new(Tamago::Level).integer().default(1))
                     .col(
-                        ColumnDef::new(User::LastLogIn)
+                        ColumnDef::new(Tamago::RegenerationRate)
+                            .integer()
+                            .not_null(),
+                    )
+                    .col(
+                        ColumnDef::new(Tamago::RegenerationIntervalMinute)
+                            .integer()
+                            .not_null(),
+                    )
+                    .col(ColumnDef::new(Tamago::IsDead).boolean().default(false))
+                    .col(ColumnDef::new(Tamago::DeathTypeId).integer().not_null())
+                    .col(ColumnDef::new(Tamago::DeathDate).timestamp().null())
+                    .col(
+                        ColumnDef::new(Tamago::CreatedAt)
                             .timestamp()
                             .default(Expr::current_timestamp())
                             .not_null(),
                     )
-                    .col(
-                        ColumnDef::new(User::CreatedAt)
-                            .timestamp()
-                            .default(Expr::current_timestamp())
-                            .not_null(),
+                    .foreign_key(
+                        ForeignKey::create()
+                            .name("fk-tamago-user_id")
+                            .from(Tamago::Table, Tamago::UserId)
+                            .to(User::Table, User::Id),
                     )
                     .to_owned(),
             )
             .await
     }
 
-    // Define how to rollback this migration: Drop the User table.
+    // Define how to rollback this migration: Drop the Tamago table.
     async fn down(&self, manager: &SchemaManager) -> Result<(), DbErr> {
         manager
-            .drop_table(Table::drop().table(User::Table).to_owned())
+            .drop_table(Table::drop().table(Tamago::Table).to_owned())
             .await
     }
 }
 
 #[derive(Iden)]
-pub enum User {
+pub enum Tamago {
     Table,
     Id,
     UserId,
