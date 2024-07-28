@@ -31,6 +31,8 @@ RUN \
 # Use a minimal Debian image as the base image for the final stage
 FROM debian:bookworm-slim AS final
 
+RUN apt-get update && apt-get install libssl-dev
+
 # Add a new user named 'appuser' with specified options
 # 1 - Disable password login for the user
 # 2 - Set empty GECOS fields (user information fields)

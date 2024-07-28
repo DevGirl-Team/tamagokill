@@ -2,6 +2,8 @@ ARG RUST_VERSION=1.78.0
 
 FROM rust:${RUST_VERSION}-slim-bookworm
 
+RUN apt-get update && apt-get install -y libssl-dev pkg-config
+
 WORKDIR /app
 
 COPY . .
