@@ -1,24 +1,27 @@
-#!/bin/sh
-#
-# An example hook script to check the commit log message.
-# Called by "git commit" with one argument, the name of the file
-# that has the commit message.  The hook should exit with non-zero
-# status after issuing an appropriate message if it wants to stop the
-# commit.  The hook is allowed to edit the commit message file.
-#
-# To enable this hook, rename this file to "commit-msg".
+#!/bin/bash
 
-# Uncomment the below to add a Signed-off-by line to the message.
-# Doing this in a hook is a bad idea in general, but the prepare-commit-msg
-# hook is more suited to it.
-#
-# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
-# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+# Regex to validate the type pattern
+REGEX="^((Merge[ a-z-]* branch.*)|(Revert*)|((build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\(.*\))?!?: .*))"
 
-# This example catches duplicate Signed-off-by lines.
+FILE=`cat $1` # File containing the commit message
 
-test "" = "$(grep '^Signed-off-by: ' "$1" |
-	 sort | uniq -c | sed -e '/^[ 	]*1[ 	]/d')" || {
-	echo >&2 Duplicate Signed-off-by lines.
+if ! [[ $FILE =~ $REGEX ]]; then
+	echo >&2 "ERROR: Commit aborted for not following the Conventional Commit standard.​"
+	echo >&2 "Hints: The first line of your message should have the form <type>[optional scope]: <description>"
+	echo >&2 "With type being one of these:
+- feat
+- fix
+- perf
+- refactor
+- style
+- test
+- build
+- ops
+- docs
+- chore
+- merge
+- revert
+"
+	echo >&2 "And scope (if given): [global, api, web, db, docker]"
 	exit 1
-}
+fi
