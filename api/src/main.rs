@@ -1,10 +1,40 @@
 use axum::{
     http::StatusCode,
     response::IntoResponse,
+    response::Redirect,
     routing::{get, post},
-    Json, Router,
+    Json, Router, 
 };
 use serde::{Deserialize, Serialize};
+
+use utoipa::OpenApi;
+use utoipauto::utoipauto;
+
+#[utoipauto(
+    paths = "./src"
+)]
+#[derive(OpenApi)]
+#[openapi(
+    info(
+        title = "Tamagokill API", 
+        description = "API for the Tamagokill project.",
+        version = "0.1.0"
+    )
+)]
+pub struct ApiDoc;
+
+/// Return JSON version of an OpenAPI schema
+#[utoipa::path(
+    get,
+    path = "/api-docs/openapi.json",
+    responses(
+        (status = 200, description = "JSON file", body = ())
+    )
+)]
+async fn openapi() -> Json<utoipa::openapi::OpenApi> {
+    Json(ApiDoc::openapi())
+}
+
 
 #[tokio::main]
 async fn main() {
@@ -13,8 +43,8 @@ async fn main() {
 
     // build our application with a route
     let app = Router::new()
-        // `GET /` goes to `root`
-        .route("/", get(root))
+        .route("/", get(|| async { Redirect::permanent("/api/docs/openapi.json") }))
+        .route("/api/docs/openapi.json", get(openapi))
         // `POST /users` goes to `create_user`
         .route("/users", post(create_user));
 
@@ -24,11 +54,6 @@ async fn main() {
         .unwrap();
     tracing::debug!("listening on {}", listener.local_addr().unwrap());
     axum::serve(listener, app).await.unwrap();
-}
-
-// basic handler that responds with a static string
-async fn root() -> &'static str {
-    "Hello, World!"
 }
 
 async fn create_user(
