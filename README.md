@@ -1,4 +1,6 @@
 # tamagokill
+[![](https://dcbadge.limes.pink/api/server/discord.gg/Njh6vWPH2h)](discord.gg/Njh6vWPH2h)
+
 Tamagochi, mais version Mirror universe ; Le but n'est pas de le tenir en vie, mais de le tuer. Projet open-source avec la communauté sur Twitch. Pour fêter les 4k followers.
 
 ## Roadmap
