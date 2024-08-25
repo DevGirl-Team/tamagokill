@@ -1,3 +1,7 @@
+<p align="center" width="100%">
+    <img width="33%" src="https://media.discordapp.net/attachments/1277269332728221977/1277311846768185364/Frame_46.png?ex=66ccb4db&is=66cb635b&hm=042ea7481d26fd583bc89604ad53eadb93c44f7463b3adcf6789d9eebf851ade&=&format=webp&quality=lossless">
+</p>
+
 # tamagokill
 [![](https://dcbadge.limes.pink/api/server/discord.gg/Njh6vWPH2h)](discord.gg/Njh6vWPH2h)
 
