@@ -31,6 +31,7 @@ Tamagochi, mais version Mirror universe ; Le but n'est pas de le tenir en vie, m
 - [Docker](https://www.docker.com/) : Nécessaire pour run l'environnement complete (ou partiel) dans des containers. Cela permet d'assurer que l'environnement reste aussi similaire que possible d'une machine à l'autre.
 - [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html) : Nécessaire pour compiler l'API en Rust hors des containers. Cargo gère aussi les packages et dépendances de l'API.
 - [Node.js & npm](https://nodejs.org/en) : Nécessaire pour compiler et run localement la Web UI de Tamagokill
+- [nvm](https://github.com/nvm-sh/nvm) : Utile pour basculer sur les bonnes versions de node.js/npm, notamment si vous avez plusieurs projets sur votre ordi dans des versions différentes.
 
 ## Getting started
 
@@ -49,6 +50,32 @@ cargo run
 ```
 
 #### Web
+
+##### Première étape: utiliser une bonne version de node.
+
+*Les versions éligibles écrites dans `web/package.json` dans la section `engine`.*
+Le repository contient un `.nvmrc` qui permet à **nvm** de directement charger la bonne version 
+
+```sh
+# Vérifier sa version de node
+node -v
+
+# Basculer vers la bonne version de node
+cd web
+
+# Si vous n'avez pas encore installé la version de node pour ce projet
+nvm install 
+
+# Si vous l'avez déjà mais la version actuellement utilisée (retournée par node -v) n'est pas compatible avec ce projet
+nvm use 
+
+
+# A noter que nvm install marche comme nvm use mais download au préalable si besoin, dans le doute, vous pouvez juste retenir nvm install.
+
+```
+
+##### Deuxième étape: compiler et travailler sur le projet
+
 ```sh
 # Pour compiler puis lancer l'UI
 

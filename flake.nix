@@ -31,7 +31,7 @@
 
     devBuildInputs = with pkgs; [
       rust178
-      nodejs_18
+      nodejs_20
       cargo-watch
       git
       gitflow
