@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cat ./tamagokill.ascii
-cat ./startup.ascii
+cat ./setup.ascii
 
 problem_count=0
 incr_pbs () {
