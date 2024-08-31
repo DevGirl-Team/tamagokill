@@ -34,6 +34,12 @@ Tamagochi, mais version Mirror universe ; Le but n'est pas de le tenir en vie, m
 
 ## Getting started
 
+```sh
+# Pour vérifier les outils nécessaires
+# et installer les git hooks localement
+./startup.sh
+```
+
 ### Manually
 #### API
 ```

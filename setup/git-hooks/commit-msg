@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Regex to validate the type pattern
+REGEX="^(((build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\((global|api|web|db|docker)\))?!?: .*))"
+
+FILE=`cat $1` # File containing the commit message
+
+if ! [[ $FILE =~ $REGEX ]]; then
+	echo >&2 "ERROR: Commit aborted for not following the Conventional Commit standard.​"
+	echo >&2 "Hints: The first line of your message should have the form <type>[optional scope]: <description>"
+	echo >&2 "With type being one of these:
+- feat
+- fix
+- perf
+- refactor
+- style
+- test
+- build
+- ops
+- docs
+- chore
+- merge
+- revert
+"
+	echo >&2 "And scope (if given): [global, api, web, db, docker]"
+	exit 1
+fi
