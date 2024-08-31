@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Regex to validate the type pattern
-REGEX="^((Merge[ a-z-]* branch.*)|(Revert*)|((build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\(.*\))?!?: .*))"
+REGEX="^(((build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\((global|api|web|db|docker)\))?!?: .*))"
 
 FILE=`cat $1` # File containing the commit message
 
