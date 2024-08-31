@@ -12,7 +12,7 @@ services:
     build: 
       context: ./web
       args:
-        - NODE_VERSION=${NODE_VERSION:-18}
+        - NODE_VERSION=${NODE_VERSION:-20}
     ports: 
      - ${WEB_PORT:-3000}:3000
 
@@ -20,7 +20,7 @@ services:
     build: 
       context: ./docs
       args:
-        - NODE_VERSION=${NODE_VERSION:-18}
+        - NODE_VERSION=${NODE_VERSION:-20}
     ports: 
      - ${DOCS_PORT:-3001}:3001
       

@@ -10,3 +10,6 @@ serde_json = "1.0.68"
 tokio = { version = "1.0", features = ["full"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+utoipa = "4.2.3"
+utoipa-swagger-ui = { version = "7.1.0", features = ["axum"] }
+utoipauto = "0.1.12"

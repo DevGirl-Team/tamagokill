@@ -1,10 +1,31 @@
 use axum::{
     http::StatusCode,
     response::IntoResponse,
+    response::Redirect,
     routing::{get, post},
-    Json, Router,
+    Json, Router, 
 };
 use serde::{Deserialize, Serialize};
+
+use utoipa::{
+    OpenApi,
+    ToSchema
+};
+use utoipauto::utoipauto;
+use utoipa_swagger_ui::SwaggerUi;
+
+#[utoipauto(
+    paths = "./src"
+)]
+#[derive(OpenApi)]
+#[openapi(
+    info(
+        title = "Tamagokill API", 
+        description = "API for the Tamagokill project.",
+        version = "0.1.0"
+    )
+)]
+pub struct ApiDoc;
 
 #[tokio::main]
 async fn main() {
@@ -13,8 +34,8 @@ async fn main() {
 
     // build our application with a route
     let app = Router::new()
-        // `GET /` goes to `root`
-        .route("/", get(root))
+        .merge(SwaggerUi::new("/swagger-ui").url("/api-docs/openapi.json", ApiDoc::openapi()))
+        .route("/", get(|| async { Redirect::permanent("/swagger-ui") }))
         // `POST /users` goes to `create_user`
         .route("/users", post(create_user));
 
@@ -26,11 +47,17 @@ async fn main() {
     axum::serve(listener, app).await.unwrap();
 }
 
-// basic handler that responds with a static string
-async fn root() -> &'static str {
-    "Hello, World!"
-}
-
+/// Creates a new user
+///
+/// Creates a new user and returns the user.
+#[utoipa::path(
+    post,
+    path = "/users",
+    request_body = CreateUser,
+    responses(
+        (status = 201, description = "The user created", body = User)
+    )
+)]
 async fn create_user(
     // this argument tells axum to parse the request body
     // as JSON into a `CreateUser` type
@@ -49,12 +76,14 @@ async fn create_user(
 
 // the input to our `create_user` handler
 #[derive(Deserialize)]
+#[derive(ToSchema)]
 struct CreateUser {
     username: String,
 }
 
 // the output to our `create_user` handler
 #[derive(Serialize)]
+#[derive(ToSchema)]
 struct User {
     id: u64,
     username: String,

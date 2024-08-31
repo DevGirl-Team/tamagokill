@@ -23,7 +23,7 @@ services:
       context: ./web
       dockerfile: Dockerfile.dev
       args:
-        - NODE_VERSION=${NODE_VERSION:-18}
+        - NODE_VERSION=${NODE_VERSION:-20}
     develop:
       watch:
         - action: sync
@@ -43,7 +43,7 @@ services:
       context: ./docs
       dockerfile: Dockerfile.dev
       args:
-        - NODE_VERSION=${NODE_VERSION:-18}
+        - NODE_VERSION=${NODE_VERSION:-20}
     develop:
       watch:
         - action: sync
