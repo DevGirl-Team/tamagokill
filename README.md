@@ -17,7 +17,8 @@ Tamagochi, mais version Mirror universe ; Le but n'est pas de le tenir en vie, m
 - [x] Mise en place des templates pour Issues
 - [x] Mise en place de la doc avec [Docusaurus](https://docusaurus.io/)
 - [x] Ajout CONTRIBUTING.md
-- [ ] Intégrer le crate (code + doc) du générateur de tamago sprite
+- [ ] Intégrer le crate (code + doc) du générateur de tamago sprite https://github.com/ferdodo/procedural-tamago-sprite
+- [ ] Doc seaORM pour l'API
 - [ ] Ajout d'un manuel pour les ADR dans CONTRIBUTING.md
 - [ ] Hosting (Shiftek ou Vercel ?)
 - [ ] Transformer les fichiers de config en tables d'authorité
